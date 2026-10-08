@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FFF3DB" />
+  <title>Biskut Inc. — Kolektif Seni Lokal</title>
+  <meta name="description" content="Biskut Inc. is a six-person digital art collective creating vibrant local stories, illustrations, motion and visual experiments." />
+  <style>
+    :root{
+      --brown:#382820;
+      --cream:#FFF3DB;
+      --blue:#334DE8;
+      --yellow:#F6C84A;
+      --green:#548465;
+      --red:#EB5A45;
+      --ink:#2b211b;
+      --paper:#fffaf0;
+      --max:1180px;
+      --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--brown);font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1.5px solid rgba(56,40,32,.18)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:-.04em;font-size:1.5rem}
+    .brand-mark{width:40px;height:40px;border-radius:48% 52% 44% 56% / 55% 45% 55% 45%;background:var(--brown);color:var(--cream);display:grid;place-items:center;font-weight:950;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
+    .nav-links{display:flex;align-items:center;gap:24px;font-weight:800;font-size:.92rem}
+    .nav-links a{padding:10px 2px;position:relative}
+    .nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:3px;background:var(--green);border-radius:99px;transition:.2s}
+    .nav-links a:hover:after{right:0}
+    .pill{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--blue);color:white;font-weight:900;box-shadow:0 4px 0 #2235a3;transition:.18s transform,.18s box-shadow}
+    .pill:hover{transform:translateY(-2px);box-shadow:0 6px 0 #2235a3}
+
+    .hero{padding:58px 0 34px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:56px}
+    .eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:20px}
+    .eyebrow:before{content:"";width:44px;height:4px;border-radius:10px;background:var(--blue)}
+    .hero h1{font-family:"Arial Rounded MT Bold","Trebuchet MS",sans-serif;font-size:clamp(4.2rem,9vw,8.5rem);line-height:.8;letter-spacing:-.085em;margin:0;color:var(--brown);max-width:760px}
+    .hero h1 .dot{color:var(--blue)}
+    .subhead{font-family:Georgia,serif;font-size:clamp(1.5rem,3vw,2.5rem);margin:28px 0 14px}
+    .intro{font-size:1.08rem;line-height:1.7;max-width:650px;color:#57473e}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .ghost{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:2px solid var(--brown);border-radius:999px;font-weight:900;background:rgba(255,255,255,.28)}
+
+    .mascot-stage{position:relative;min-height:520px;display:grid;place-items:center}
+    .blob{position:absolute;inset:32px 0 0 14%;border-radius:34% 66% 62% 38% / 45% 36% 64% 55%;background:var(--yellow);transform:rotate(-6deg);box-shadow:20px 24px 0 var(--blue)}
+    .mascot-card{position:relative;width:min(420px,90%);background:var(--paper);border:2px solid var(--brown);border-radius:34px;padding:28px;transform:rotate(3deg);box-shadow:12px 14px 0 var(--brown)}
+    .mascot-card svg{width:100%;height:auto}
+    .sticker{position:absolute;padding:9px 14px;border-radius:999px;background:white;border:2px solid var(--brown);font-weight:950;box-shadow:4px 5px 0 var(--brown)}
+    .s1{right:-22px;top:18px;transform:rotate(7deg);color:var(--green)}
+    .s2{left:-20px;bottom:36px;transform:rotate(-8deg);color:var(--blue)}
+
+    .ticker{border-top:2px solid var(--brown);border-bottom:2px solid var(--brown);overflow:hidden;background:var(--blue);color:white;padding:13px 0;margin:38px 0 0}
+    .ticker-track{display:flex;gap:44px;white-space:nowrap;font-weight:950;letter-spacing:.09em;text-transform:uppercase;animation:marquee 18s linear infinite;width:max-content}
+    .ticker-track span:before{content:"✦";color:var(--yellow);margin-right:44px}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    section{padding:88px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:34px}
+    .kicker{font-weight:950;letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;color:var(--green)}
+    h2{font-family:"Arial Rounded MT Bold","Trebuchet MS",sans-serif;font-size:clamp(2.4rem,5vw,4.6rem);letter-spacing:-.06em;line-height:.95;margin:.35rem 0 0}
+    .section-copy{max-width:560px;line-height:1.65;color:#5d4c43}
+
+    .artists{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .artist{border:2px solid var(--brown);border-radius:28px;overflow:hidden;background:var(--paper);box-shadow:7px 8px 0 var(--brown);transition:.22s transform,.22s box-shadow}
+    .artist:hover{transform:translate(-3px,-4px) rotate(-.4deg);box-shadow:11px 13px 0 var(--brown)}
+    .art{aspect-ratio:1.12/1;position:relative;overflow:hidden;background:var(--yellow)}
+    .art:before,.art:after{content:"";position:absolute;border-radius:50%}
+    .artist:nth-child(1) .art{background:linear-gradient(135deg,var(--blue) 0 35%,var(--yellow) 35% 65%,var(--cream) 65%)}
+    .artist:nth-child(1) .art:before{width:160px;height:160px;background:var(--red);left:26%;top:18%;border:18px solid var(--green)}
+    .artist:nth-child(2) .art{background:repeating-linear-gradient(45deg,var(--cream) 0 22px,var(--blue) 22px 42px)}
+    .artist:nth-child(2) .art:before{width:180px;height:90px;background:var(--yellow);right:-20px;bottom:24px;border-radius:55% 10% 50% 20%;transform:rotate(-10deg)}
+    .artist:nth-child(3) .art{background:var(--green)}
+    .artist:nth-child(3) .art:before{width:220px;height:220px;background:var(--cream);left:-60px;top:-70px;box-shadow:170px 120px 0 var(--yellow)}
+    .artist:nth-child(3) .art:after{width:90px;height:190px;background:var(--blue);right:35px;top:18px;border-radius:60% 40% 55% 45%;transform:rotate(35deg)}
+    .artist:nth-child(4) .art{background:radial-gradient(circle at 25% 30%,var(--red) 0 14%,transparent 15%),radial-gradient(circle at 68% 58%,var(--blue) 0 22%,transparent 23%),linear-gradient(155deg,var(--yellow),var(--cream))}
+    .artist:nth-child(5) .art{background:var(--cream)}
+    .artist:nth-child(5) .art:before{width:160%;height:48px;background:var(--green);left:-25%;top:25%;border-radius:0;transform:rotate(28deg);box-shadow:0 75px 0 var(--yellow),0 150px 0 var(--blue)}
+    .artist:nth-child(6) .art{background:var(--blue)}
+    .artist:nth-child(6) .art:before{width:180px;height:180px;background:var(--yellow);left:calc(50% - 90px);top:calc(50% - 90px);border-radius:42% 58% 48% 52% / 51% 40% 60% 49%;box-shadow:0 0 0 18px var(--cream),0 0 0 22px var(--brown)}
+    .artist-body{padding:20px 20px 24px}
+    .num{font-size:.7rem;letter-spacing:.18em;font-weight:900;text-transform:uppercase;color:var(--green)}
+    .artist h3{font-size:1.55rem;margin:.35rem 0 .3rem;letter-spacing:-.035em}
+    .artist p{margin:0;color:#66564d;line-height:1.5}
+    .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+    .tag{font-size:.72rem;padding:6px 9px;background:var(--cream);border:1.5px solid var(--brown);border-radius:999px;font-weight:800}
+
+    .work-bg{background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
+    .work-bg .kicker{color:var(--yellow)}
+    .work-bg .section-copy{color:#e7d8c9}
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:260px 260px;gap:16px}
+    .piece{border-radius:26px;overflow:hidden;position:relative;border:2px solid #160f0c;background:var(--paper)}
+    .piece:first-child{grid-row:1/3}
+    .piece:nth-child(4){grid-column:2/4}
+    .piece .visual{position:absolute;inset:0;transition:.35s transform}
+    .piece:hover .visual{transform:scale(1.035)}
+    .piece:nth-child(1) .visual{background:linear-gradient(160deg,var(--yellow),#f4d970 36%,var(--red) 37% 52%,var(--blue) 52% 72%,var(--green) 72%)}
+    .piece:nth-child(2) .visual{background:repeating-linear-gradient(135deg,var(--cream) 0 20px,var(--blue) 20px 38px,var(--yellow) 38px 55px,var(--green) 55px 70px)}
+    .piece:nth-child(3) .visual{background:radial-gradient(circle at 30% 30%,var(--yellow) 0 13%,transparent 14%),radial-gradient(circle at 70% 65%,var(--red) 0 16%,transparent 17%),var(--cream)}
+    .piece:nth-child(4) .visual{background:linear-gradient(90deg,var(--green),var(--cream) 48%,var(--yellow) 49% 72%,var(--blue) 72%)}
+    .piece-info{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,243,219,.93);color:var(--brown);border:1.5px solid var(--brown);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:900}
+    .piece-info small{font-weight:700;opacity:.68}
+
+    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:center}
+    .brandboard{border:2px solid var(--brown);box-shadow:10px 11px 0 var(--brown);border-radius:26px;overflow:hidden;transform:rotate(-1.5deg);background:white}
+    .story-copy{font-size:1.1rem;line-height:1.75;color:#5d4c43}
+    .values{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+    .value{padding:18px;border-radius:18px;border:1.5px solid var(--brown);background:rgba(255,255,255,.28)}
+    .value b{display:block;font-size:1.1rem;margin-bottom:4px}
+
+    .contact-card{background:var(--yellow);border:2px solid var(--brown);border-radius:34px;padding:48px;box-shadow:12px 14px 0 var(--brown);display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;position:relative;overflow:hidden}
+    .contact-card:after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:var(--red);right:-55px;top:-55px;box-shadow:-88px 176px 0 var(--green);opacity:.9}
+    .contact-card h2{max-width:760px;position:relative;z-index:1}
+    .contact-card p{position:relative;z-index:1;max-width:700px;line-height:1.6}
+    .contact-card .pill{background:var(--brown);box-shadow:0 5px 0 #160f0c;position:relative;z-index:2;white-space:nowrap}
+
+    footer{padding:50px 0 34px}
+    .footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-bottom:28px;border-bottom:1.5px solid rgba(56,40,32,.25)}
+    .footer-small{display:flex;justify-content:space-between;gap:20px;padding-top:20px;font-size:.82rem;color:#6b5b51}
+
+    @media(max-width:900px){
+      .nav-links a:not(.pill){display:none}
+      .hero-grid,.story-grid{grid-template-columns:1fr}
+      .mascot-stage{min-height:430px;margin-top:-8px}
+      .artists{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:1fr 1fr;grid-template-rows:320px 220px 220px}
+      .piece:first-child{grid-column:1/3;grid-row:auto}.piece:nth-child(4){grid-column:1/3}
+      .contact-card{grid-template-columns:1fr;align-items:start}
+      .contact-card .pill{width:max-content}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(100% - 24px,var(--max))}
+      .nav-inner{height:68px}.brand{font-size:1.25rem}.brand-mark{width:34px;height:34px}
+      .hero{padding-top:42px}.hero h1{font-size:clamp(4rem,19vw,6rem)}
+      .mascot-stage{min-height:365px}.mascot-card{padding:20px;box-shadow:7px 8px 0 var(--brown)}
+      section{padding:68px 0}.section-head{align-items:start;flex-direction:column}.artists{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr;grid-template-rows:repeat(4,260px)}.piece:first-child,.piece:nth-child(4){grid-column:auto;grid-row:auto}
+      .values{grid-template-columns:1fr}.contact-card{padding:30px 24px;box-shadow:8px 9px 0 var(--brown)}
+      .footer-top,.footer-small{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.ticker-track{animation:none}.piece .visual,.artist{transition:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="Biskut Inc home"><span class="brand-mark">B.</span> Biskut inc.</a>
+      <div class="nav-links">
+        <a href="#artists">Artists</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="pill">Work with us ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Kolektif Seni Lokal · 6 Digital Artists</div>
+          <h1>Biskut<span class="dot">.</span><br>inc.</h1>
+          <div class="subhead">Lain gaya, satu kita.</div>
+          <p class="intro">Six digital artists, six different visual languages, one shared table. We create illustration, motion, character work, graphic experiments and culture-led digital stories with a distinctly local pulse.</p>
+          <div class="hero-actions"><a href="#artists" class="pill">Meet the six</a><a href="#work" class="ghost">See selected work</a></div>
+        </div>
+        <div class="mascot-stage" aria-label="Biskut mascot illustration">
+          <div class="blob"></div>
+          <div class="mascot-card">
+            <span class="sticker s1">local ✿</span><span class="sticker s2">made together</span>
+            <svg viewBox="0 0 420 420" role="img" aria-label="Smiling biscuit mascot wearing a blue patterned headpiece">
+              <path d="M130 82 L182 28 L230 50 L282 22 L292 106 Z" fill="#334DE8" stroke="#382820" stroke-width="8" stroke-linejoin="round"/>
+              <path d="M150 76 L185 50 L210 74 L238 45 L268 82" fill="none" stroke="#F6C84A" stroke-width="8" stroke-linecap="round"/>
+              <path d="M211 94c29-17 52 4 57 29 27-5 49 14 46 40 28 4 41 30 28 53 22 16 18 46-7 58 9 27-13 50-40 48-4 29-34 42-57 25-18 23-50 21-66-3-26 12-54-5-55-35-28-5-42-34-26-57-22-19-13-50 13-59-6-29 18-51 45-45 10-27 40-36 62-18z" fill="#F6C84A" stroke="#382820" stroke-width="8"/>
+              <ellipse cx="182" cy="194" rx="12" ry="22" fill="#382820"/><ellipse cx="246" cy="194" rx="12" ry="22" fill="#382820"/>
+              <path d="M195 224c14 18 31 18 44 0" fill="none" stroke="#382820" stroke-width="8" stroke-linecap="round"/>
+              <g fill="#382820"><circle cx="145" cy="150" r="4"/><circle cx="232" cy="140" r="4"/><circle cx="270" cy="161" r="4"/><circle cx="158" cy="250" r="4"/><circle cx="260" cy="262" r="4"/><circle cx="210" cy="292" r="4"/></g>
+              <path d="M132 310c-28 22-41 47-53 70M290 309c33 23 48 46 63 67" fill="none" stroke="#382820" stroke-width="13" stroke-linecap="round"/>
+              <path d="M81 377c-14 13-27 13-40 5M351 377c13 13 26 12 38 3" fill="none" stroke="#382820" stroke-width="13" stroke-linecap="round"/>
+              <path d="M169 325c-4 34-2 57 4 74M254 325c2 30 0 55-8 74" fill="none" stroke="#382820" stroke-width="13" stroke-linecap="round"/>
+              <path d="M173 398h-35M246 398h35" stroke="#382820" stroke-width="13" stroke-linecap="round"/>
+              <path d="M315 98l15-35M342 112l29-25M325 127l38 0" stroke="#548465" stroke-width="9" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ticker"><div class="ticker-track"><span>Illustration</span><span>Motion</span><span>Character</span><span>Editorial</span><span>Digital Art</span><span>Culture</span><span>Illustration</span><span>Motion</span><span>Character</span><span>Editorial</span><span>Digital Art</span><span>Culture</span></div></div>
+    </header>
+
+    <section id="artists">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">01 · The collective</div><h2>Six styles.<br>One studio spirit.</h2></div><p class="section-copy">Each member keeps their own visual voice. Together, we become a flexible creative crew for campaigns, commissions, exhibitions and experiments.</p></div>
+        <div class="artists">
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 01</div><h3>Your Name</h3><p>Bold editorial illustration with playful shapes and sharp cultural observations.</p><div class="tagrow"><span class="tag">Editorial</span><span class="tag">Illustration</span></div></div></article>
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 02</div><h3>Your Name</h3><p>Pattern-led visuals, identity systems and digital craft inspired by local textures.</p><div class="tagrow"><span class="tag">Branding</span><span class="tag">Patterns</span></div></div></article>
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 03</div><h3>Your Name</h3><p>Character art and warm narrative scenes that make people feel instantly familiar.</p><div class="tagrow"><span class="tag">Character</span><span class="tag">Storytelling</span></div></div></article>
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 04</div><h3>Your Name</h3><p>Colour-forward motion pieces, looping animations and kinetic social content.</p><div class="tagrow"><span class="tag">Motion</span><span class="tag">Animation</span></div></div></article>
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 05</div><h3>Your Name</h3><p>Experimental composition, mixed media and graphic art that bends the grid.</p><div class="tagrow"><span class="tag">Mixed Media</span><span class="tag">Graphic Art</span></div></div></article>
+          <article class="artist"><div class="art"></div><div class="artist-body"><div class="num">Artist 06</div><h3>Your Name</h3><p>Digital worlds, surreal image-making and conceptual visual direction.</p><div class="tagrow"><span class="tag">Digital Art</span><span class="tag">Art Direction</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work-bg">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">02 · Selected work</div><h2>Made together,<br>never the same.</h2></div><p class="section-copy">A flexible showcase area for the collective’s strongest commissioned and self-initiated projects.</p></div>
+        <div class="gallery">
+          <a class="piece" href="#contact"><div class="visual"></div><div class="piece-info"><span>Kawan-Kawan / Campaign</span><small>Illustration · 2026</small></div></a>
+          <a class="piece" href="#contact"><div class="visual"></div><div class="piece-info"><span>Anyaman Digital</span><small>Identity</small></div></a>
+          <a class="piece" href="#contact"><div class="visual"></div><div class="piece-info"><span>Rasa-Rasa</span><small>Characters</small></div></a>
+          <a class="piece" href="#contact"><div class="visual"></div><div class="piece-info"><span>Gerak Sama-Sama</span><small>Motion · Social</small></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap story-grid">
+        <div class="brandboard"><img src="assets/brand-board.png" alt="Biskut Inc. visual identity concept board" /></div>
+        <div><div class="kicker">03 · About Biskut</div><h2>Different flavours,<br>same tin.</h2><p class="story-copy">Biskut Inc. is built on a simple idea: local artists should not need to look identical to belong together. Our identity is warm, tactile, playful and proudly rooted in the everyday visual culture around us—from handmade print textures to woven geometric forms and bright tropical colour.</p><div class="values"><div class="value"><b>Lokal, bukan literal.</b><span>We draw from place without turning culture into decoration.</span></div><div class="value"><b>Individual first.</b><span>Every artist keeps a distinct signature and point of view.</span></div><div class="value"><b>Better together.</b><span>We pair artists based on what each project actually needs.</span></div><div class="value"><b>Play is serious work.</b><span>Curiosity, humour and experimentation are part of the process.</span></div></div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap"><div class="contact-card"><div><div class="kicker" style="color:var(--brown)">04 · Collaborate</div><h2>Got a brief? Pass the biskut.</h2><p>For campaigns, commissions, exhibitions, brand collaborations or collective projects, tell us what you’re making and we’ll assemble the right mix from the six.</p></div><a class="pill" href="mailto:hello@biskutinc.com">hello@biskutinc.com ↗</a></div></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><div class="footer-top"><a href="#top" class="brand"><span class="brand-mark">B.</span> Biskut inc.</a><div class="tagrow"><a class="tag" href="#">Instagram</a><a class="tag" href="#">Behance</a><a class="tag" href="#">TikTok</a></div></div><div class="footer-small"><span>© 2026 Biskut Inc. Kolektif Seni Lokal.</span><span>Lain gaya, satu kita.</span></div></div></footer>
+</body>
+</html>
